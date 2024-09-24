@@ -30,6 +30,11 @@ const expenses = computed(() => {
 })
 
 const handleTransactionSubmitted = (transactionData) => {
+  if (isNaN(transactionData.amount)) {
+    console.log(transactionData)
+    toast.error('Use Number to Enter')
+    return
+  }
   state.transactions.push({
     id: generateUniqueId(),
     text: transactionData.text,
